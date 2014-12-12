@@ -1,3 +1,5 @@
+![image](https://raw.githubusercontent.com/GesJeremie/Gotham-documentation/master/background.jpg)
+
 # GothamJS
 
 GothamJS is a simple and tiny framework built for **Directories Project**.
