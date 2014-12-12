@@ -28,7 +28,7 @@ Each routes of your application must be added in the `routes.coffee` file.
 
 Imagine this file `routes.coffee` : 
 
-```
+```coffeescript
 
 module.exports = (route) ->
   
@@ -40,7 +40,7 @@ module.exports = (route) ->
 
 Of course you can add variables into your routes to be more flexible.
 
-```
+```coffeescript
 
 module.exports = (route) ->
   
