@@ -11,6 +11,7 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
 - Run brunch `$ brunch watch`
 
 
+
 ## Application Flow Chart
 
-
+![image](https://raw.githubusercontent.com/GesJeremie/Gotham-documentation/master/schema.jpg)
