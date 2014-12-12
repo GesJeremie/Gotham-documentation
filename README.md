@@ -9,6 +9,8 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
 - [Application Flow Chart](#application-flow-chart)
 - [Routes](#routes)
 - [Controllers](#controllers)
+- [Libraries](#libraries)
+ - [View](#view)
 
 ## Installation
 
@@ -104,7 +106,62 @@ module.exports = (route) ->
 
 In the controller `controllers/zombie/edit.coffee`, you can fetch the value of the variable `:id` via the `params` variable sent to `before()` and `run()`
 
+## Libraries 
 
+Gotham have some libraries to help you when you code. 
+
+#### View
+Sometimes you need to build some html block in your javascript application like this : 
+
+```coffeescript
+
+# Zombie datas
+zombie = 
+    name: 'antoine'
+    lvl: 25
+
+# Template
+html = '<h1 class="zombie-name">' + zombie.name + '</h1>' + '<br/><span class="zombie-lvl">' + zombie.lvl + '</span>'
+
+# Render in the html
+$('#zombie-block').html(html)
+```
+
+It's ok for simple html blocks, but often you need to build big html blocks, that's why Gotham have a simple View library who use Handlebars.
+
+Gotham have already out of the box a method in the controller called `view()` to load a template and compile this one with some datas. 
+
+Create an Handlebars template in `views/zombie.hbs` : 
+
+```handlebars
+<h1 class="zombie-name">{{ name }}</h1>
+<br/>
+<span class="zombie-lvl">{{ lvl  }}</span>
+```
+
+Now you can load your template in your controller like this : 
+
+```coffeescript
+Gotham = require 'gotham/gotham'
+
+class Zombie_Edit extends Gotham.Controller
+  
+  before: ->
+
+  run: ->
+    # Our zombie
+    zombie = 
+      name: 'pierre'
+      lvl: 25
+      
+    # Load the template zombie.hbs with the zombie datas
+    # and display the result in the console log
+    console.log @view 'zombie', zombie
+
+module.exports = Zombie_Edit
+```
+
+It's simple and pretty to read. Don't hesitate to read the documentation of [Handlebars](http://handlebarsjs.com/).
 
 
 
