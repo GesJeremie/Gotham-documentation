@@ -32,11 +32,9 @@ Each routes of your application must be added in the `routes.coffee` file.
 Imagine this file `routes.coffee` : 
 
 ```coffeescript
-
 module.exports = (route) ->
   
   route.match 'zombie/users', 'zombie#index'
-
 ```
 
 > In this example when the current URL request will be : `http://localhost:3000/zombie/users`, Gotham will execute the file `controllers/zombie/index.coffee`
@@ -44,11 +42,9 @@ module.exports = (route) ->
 Of course you can add variables into your routes to be more flexible.
 
 ```coffeescript
-
 module.exports = (route) ->
   
   route.match 'zombie/:id/edit', 'zombie#edit'
-
 ```
 
 > In this example, an url like `http://localhost:3000/zombie/243/edit` or `http://localhost:3000/zombie/frank/edit` will execute the file `controllers/zombie/edit.coffee`
@@ -57,7 +53,7 @@ module.exports = (route) ->
 
 As we you see in the **routes** part, a controller is associated to one or more routes. The structure of a basic controller is like this : 
 
-```
+```coffeescript
 # require gotham
 Gotham = require 'gotham/gotham'
 
@@ -98,7 +94,7 @@ As you see in the **application flow chart** the `before()` method is always exe
 
 Gotham send to `before()` and `run()` methods the params of the router. Imagine this `routes.coffee` file : 
 
-```
+```coffeescript
 module.exports = (route) ->
   
   route.match 'zombie/:id/edit', 'zombie#edit'
