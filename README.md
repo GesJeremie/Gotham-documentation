@@ -2,6 +2,10 @@
 
 GothamJS is a simple and tiny framework built for **Directories Project**.
 
+## Summary
+- [Installation](#installation)
+- Application Flow Chart
+
 ## Installation
 
 - Go to `wanker/app_front` folder with your terminal
