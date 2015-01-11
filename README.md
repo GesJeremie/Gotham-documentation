@@ -11,9 +11,6 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
 - [Controllers](#controllers)
 - [Libraries](#libraries)
  - [View](#view)
- - [Syphon](#syphon)
-    - [get](#--get-datas)
-    - [exclude](#--exclude-datas)
 
 ## Installation
 
@@ -54,7 +51,7 @@ module.exports = (route) ->
 
 ## Controllers 
 
-As we you see in the **routes** part, a controller is associated to one or more routes. The structure of a basic controller is like this : 
+As we saw in the **routes** part, a controller is associated to one or more routes. The structure of a basic controller is like this : 
 
 ```coffeescript
 # require gotham
@@ -227,7 +224,130 @@ zombie = syphon.exclude(['email', 'zombie[name]']).get 'form'
 
 ```
 
+#### Validator
 
+Validator provide a solution to validate datas.
+
+##### - Validate datas
+
+```coffeescript
+    # New validator instance
+    validation = new Gotham.Validator()
+
+    # Your datas
+    datas = 
+      'name': 'Dead man'
+      'email': 'zombies.forever@dude.com'
+      'lvl': 99
+
+    # Your rules
+    rules =
+      'name': 'required'
+      'email': 'required|email'
+      'lvl': 'required|max:100'
+
+    # Run validation
+    validation.make datas, rules
+    
+    if validation.passes()
+      @log 'Success !' # @log is a shortcut for console.log()
+    else
+      @log 'Error !'
+```
+
+##### - Get errors
+
+**All**
+
+```coffeescript
+# Fetch all errors found
+@log validation.errors 'all'
+```
+
+**First**
+```coffeescript
+# Fetch the first error for the data lvl
+@log validation.errors 'first', 'lvl'
+```
+
+**Last**
+```coffeescript
+# Fetch the last error for the data lvl
+@log validation.errors 'last', 'lvl'
+```
+
+**Get**
+```coffeescript
+# Get all errors for the data lvl
+@log validation.errors 'get', 'lvl'
+```
+##### - Nice names for attributes
+
+Validator use the attribute name of a data to render the error message. Sometimes you need a different name, for this you need to go to `app/validators.coffee` and update `Validator::attributes`. 
+
+Example : 
+
+```coffeescript
+##
+# Attributes
+##
+Validator::attributes
+  'user_name': 'Username'
+  'password_confirmation': 'Password confirmation'
+  'user[lastname]': 'User last name'
+
+```
+##### - Create validaton rule
+
+Validator provide right now only few rules, you can create yours easily.
+The right place to create your rules is in `app/validators.coffee`, but you can do this in a controller by example.
+
+In this example we will create an `equal` validation rule.
+
+```coffeescript
+# We are in app/validators.coffee
+# but it's possible to put this code in a controller's
+# method by example
+
+##
+# Equal
+#
+# Check if a field is equal to a value
+##
+Validator::rule 'equal', (attribute, value, params) ->
+  
+  if value is params[0]
+    return true
+
+  return false
+
+
+# We add an error message for this rule
+Validator::error 'equal', 'The value of the field :attribute must equal to :value'
+
+```
+
+Now we can use this rule like this : 
+  
+```coffeescript
+
+# Validation 
+validation = new Gotham.Validator()
+
+# Your datas
+datas = 
+  'name': 'walker'
+
+# Your rules
+rules =
+  'name': 'equal:walker'
+
+# Run validation
+validation.make datas, rules
+
+# Will return true
+@log validation.passes()
+```
 
 
 
