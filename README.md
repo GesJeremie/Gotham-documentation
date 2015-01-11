@@ -11,13 +11,16 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
 - [Controllers](#controllers)
 - [Libraries](#libraries)
  - [View](#view)
+ - [Syphon](#syphon)
+  - [get](#get-datas)
+  - [exclude](#exclude-datas)
 
 ## Installation
 
 - Go to `wanker/app_front` folder with your terminal
 - Install bower dependencies `$ bower install`
 - Install npm dependencies `$ npm install`
-	- **Note:** Use `$ sudo npm install` if it's not work
+  - **Note:** Use `$ sudo npm install` if it's not work
 - Run brunch `$ brunch watch`
 
 
@@ -158,6 +161,72 @@ module.exports = Zombie_Edit
 ```
 
 It's simple and pretty to read. Don't hesitate to read the documentation of [Handlebars](http://handlebarsjs.com/).
+
+#### Syphon
+Syphon is a tiny library to fetch datas from a form.
+
+#####- Get datas
+Imagine the form : 
+```html
+<form method="get" action="" class="form">
+    <input type="text" name="user[name]"> <br/>
+    <input type="text" name="lvl"> <br/>
+    <input type="text" name="email"> <br/>
+    <button class="btn btn-primary" type="submit">
+        Add
+    </button>
+</form>
+```
+You can fetch datas from the form like this : 
+```coffeescript
+# Create a new syphon instance
+syphon = new Gotham.Syphon()
+
+# Fetch datas examples
+
+# By the tag "form"
+datas = syphon.get 'form'
+
+# By the class ".form"
+datas = syphon.get '.form'
+```
+**Note : You can use any jquery selectors**
+
+#####- Exclude datas
+
+Syphon provide a simple and elegant method to exclude some datas.
+
+Imagine this form :
+```html
+<form method="get" action="" class="form">
+    <input type="text" name="zombie[name]"> <br/>
+    <input type="text" name="lvl"> <br/>
+    <input type="text" name="email"> <br/>
+    <button class="btn btn-primary" type="submit">
+        Add
+    </button>
+</form>
+```
+
+We want fetch the datas of the form without the "email" field :
+
+```coffeescript
+# Create a new syphon instance
+syphon = new Gotham.Syphon()
+
+# Exclude email
+datas = syphon.exclude('email').get 'form'
+
+# Other examples : 
+
+# Exclude email and lvl
+other = syphon.exclude('email', 'lvl').get 'form'
+
+# Exclude email and zombie[name] with array style
+zombie = syphon.exclude(['email', 'zombie[name]']).get 'form'
+
+```
+
 
 
 
