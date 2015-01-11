@@ -305,7 +305,7 @@ Validator::attributes
   'user[lastname]': 'User last name'
 
 ```
-##### - Create validaton rule
+##### - Create validation rule
 
 Validator provide right now only few rules, you can create yours easily.
 The right place to create your rules is in `app/validators.coffee`, but you can do this in a controller by example.
