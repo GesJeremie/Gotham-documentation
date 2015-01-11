@@ -11,6 +11,14 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
 - [Controllers](#controllers)
 - [Libraries](#libraries)
  - [View](#view)
+ - [Syphon](#syphon)
+    - [Get datas](#--get-datas)
+    - [Exclude datas](#--exclude-datas)
+ - [Validator](#validator)
+    - [Validate datas](#--validate-datas)
+    - [Get errors](#--get-errors)
+    - [Nice names for attributes](#--nice-names-for-attributes)
+    - [Create validation rule](#--create-validation-rule) 
 
 ## Installation
 
@@ -327,7 +335,7 @@ Validator::error 'equal', 'The value of the field :attribute must equal to :valu
 
 ```
 
-Now we can use this rule like this : 
+Now we can use this rule like that : 
   
 ```coffeescript
 
