@@ -12,8 +12,8 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
 - [Libraries](#libraries)
  - [View](#view)
  - [Syphon](#syphon)
-  - [get](#get-datas)
-  - [exclude](#exclude-datas)
+   - [get](#get-datas)
+   - [exclude](#exclude-datas)
 
 ## Installation
 
