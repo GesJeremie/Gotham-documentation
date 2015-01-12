@@ -58,6 +58,8 @@ module.exports = (route) ->
   route.match 'zombie/:id/edit', 'zombie#edit'
 ```
 
+> In this example, an url like `http://localhost:3000/zombie/243/edit` or `http://localhost:3000/zombie/frank/edit` will execute the file `controllers/zombie/edit.coffee`
+
 #### - Constraints
 
 Sometimes you need to attach a constraint to a route. You can do that easily :
@@ -74,7 +76,7 @@ route.match 'zombie/:town', 'zombie#town', (params) ->
 
 ```
 
-In this case, the route will match only if the town passed is `new-york`, it's a little bit useless here, but we can imagine everything. The only thing to keep in mind the constraint function must return `true` or `false`.
+> In this case, the route will match only if the town passed is `new-york`, it's a little bit useless here, but we can imagine everything. The only thing to keep in mind the constraint function must return `true` or `false`.
 
 Another example : 
 
@@ -95,10 +97,8 @@ route.match '', 'zombie#index', ->
   return false
 ```
 
-In this example Gotham will execute the file `controllers/zombie/index` only if the URL is `http://south-dakota.domain.com/`
+> In this example Gotham will execute the file `controllers/zombie/index` only if the URL is `http://south-dakota.domain.com/`
 
-
-> In this example, an url like `http://localhost:3000/zombie/243/edit` or `http://localhost:3000/zombie/frank/edit` will execute the file `controllers/zombie/edit.coffee`
 
 ## Controllers 
 
