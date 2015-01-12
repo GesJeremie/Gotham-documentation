@@ -8,6 +8,8 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
 - [Installation](#installation)
 - [Application Flow Chart](#application-flow-chart)
 - [Routes](#routes)
+ - [Variables](#--variables)
+ - [Constraints](#--constraints)
 - [Controllers](#controllers)
 - [Libraries](#libraries)
  - [View](#view)
@@ -47,6 +49,7 @@ module.exports = (route) ->
 
 > In this example when the current URL request will be : `http://localhost:3000/zombie/users`, Gotham will execute the file `controllers/zombie/index.coffee`
 
+#### - Variables
 Of course you can add variables into your routes to be more flexible.
 
 ```coffeescript
@@ -54,6 +57,46 @@ module.exports = (route) ->
   
   route.match 'zombie/:id/edit', 'zombie#edit'
 ```
+
+#### - Constraints
+
+Sometimes you need to attach a constraint to a route. You can do that easily :
+
+```coffeescript
+route.match 'zombie/:town', 'zombie#town', (params) ->
+  
+  town = params.town
+
+  if town is 'new-york'
+    return true
+  else
+    return false
+
+```
+
+In this case, the route will match only if the town passed is `new-york`, it's a little bit useless here, but we can imagine everything. The only thing to keep in mind the constraint function must return `true` or `false`.
+
+Another example : 
+
+```coffeescript
+route.match '', 'zombie#index', ->
+  host = window.location.host
+
+  # Split host
+  segments = host.split '.'
+
+  # Fetch sub domain
+  sub_domain = segments[0]
+
+  if sub_domain is 'south-dakota'
+
+    return true
+
+  return false
+```
+
+In this example Gotham will execute the file `controllers/zombie/index` only if the URL is `http://south-dakota.domain.com/`
+
 
 > In this example, an url like `http://localhost:3000/zombie/243/edit` or `http://localhost:3000/zombie/frank/edit` will execute the file `controllers/zombie/edit.coffee`
 
@@ -356,6 +399,5 @@ validation.make datas, rules
 # Will return true
 @log validation.passes()
 ```
-
 
 
