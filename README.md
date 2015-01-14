@@ -375,7 +375,7 @@ Validator::rule 'equal', (attribute, value, params) ->
 
 
 # We add an error message for this rule
-Validator::error 'equal', 'The value of the field :attribute must equal to :value'
+Validator::error 'equal', 'The value of the field :attribute must equal to :option0'
 
 ```
 
