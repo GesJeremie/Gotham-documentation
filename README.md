@@ -17,6 +17,7 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
  - [Syphon](#syphon)
     - [Get datas](#--get-datas)
     - [Exclude datas](#--exclude-datas)
+    - [Keep datas](#--keep-datas)
  - [Validator](#validator)
     - [Validate datas](#--validate-datas)
     - [Get errors](#--get-errors)
@@ -261,6 +262,18 @@ other = syphon.exclude('email', 'lvl').get 'form'
 # Exclude email and zombie[name] with array style
 zombie = syphon.exclude(['email', 'zombie[name]']).get 'form'
 
+```
+
+#####- Keep datas
+
+Sometimes you need only few datas from a source. You can use `keep()`
+
+```coffeescript
+# Create a new syphon instance
+syphon = new Gotham.Syphon()
+
+# Keep only email from the form
+datas = syphon.keep('email').get 'form'
 ```
 
 #### Validator
