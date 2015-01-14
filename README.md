@@ -78,28 +78,6 @@ route.match 'zombie/:town', 'zombie#town', (params) ->
 
 > In this case, the route will match only if the town passed is `new-york`, it's a little bit useless here, but we can imagine everything. The only thing to keep in mind the constraint function must return `true` or `false`.
 
-Another example : 
-
-```coffeescript
-route.match '', 'zombie#index', ->
-  host = window.location.host
-
-  # Split host
-  segments = host.split '.'
-
-  # Fetch sub domain
-  sub_domain = segments[0]
-
-  if sub_domain is 'south-dakota'
-
-    return true
-
-  return false
-```
-
-> In this example Gotham will execute the file `controllers/zombie/index` only if the URL is `http://south-dakota.domain.com/`
-
-
 ## Controllers 
 
 As we saw in the **routes** part, a controller is associated to one or more routes. The structure of a basic controller is like this : 
@@ -400,4 +378,5 @@ validation.make datas, rules
 @log validation.passes()
 ```
 
+> Note : If you create a new rule in a controller or in another file, you must add this line `Validator = require 'gotham/validator'`
 
