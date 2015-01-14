@@ -11,6 +11,7 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
  - [Variables](#--variables)
  - [Constraints](#--constraints)
 - [Controllers](#controllers)
+  - [Shortcuts](#--shortcuts)
 - [Helpers](#helpers)
 - [Libraries](#libraries)
  - [View](#view)
@@ -133,6 +134,16 @@ module.exports = (route) ->
 ```
 
 In the controller `controllers/zombie/edit.coffee`, you can fetch the value of the variable `:id` via the `params` variable sent to `before()` and `run()`
+
+#### - Shortcuts
+
+When you are in a controller you can use some shortcuts to prettify your code.
+
+| Shortcut | Description                     | Example                                       |
+|----------|---------------------------------|-----------------------------------------------|
+| @log     | Shortcut for `console.log()`    | `@log 'I want kill a zombie dude'`            |
+| @on      | Shortcut for `$.on()` of jquery | `@on 'click', 'selector', @function_to_execute` |
+
 
 ## Helpers
 
