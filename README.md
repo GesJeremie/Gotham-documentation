@@ -21,6 +21,7 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
     - [Get errors](#--get-errors)
     - [Nice names for attributes](#--nice-names-for-attributes)
     - [Create validation rule](#--create-validation-rule) 
+    - [Rules](#--rules)
 
 ## Installation
 
@@ -379,4 +380,23 @@ validation.make datas, rules
 ```
 
 > Note : If you create a new rule in a controller or in another file, you must add this line `Validator = require 'gotham/validator'`
+
+##### - Rules
+| Rule            | Description                                                                                                    |
+|-----------------|----------------------------------------------------------------------------------------------------------------|
+| accepted        | The field under validation must be yes, on, or 1. This is useful for validating "Terms of Service" acceptance. |
+| alpha           | The field under validation must be entirely alphabetic characters.                                             |
+| alpha_dash      | The field under validation may have alpha-numeric characters, as well as dashes and underscores.               |
+| alpha_num       | The field under validation must be entirely alpha-numeric characters.                                          |
+| array           | The field under validation must be of type array.                                                              |
+| between:min,max | The field under validation must have a size between the given min and max.                                     |
+| boolean         | The field under validation must be a strict boolean.                                                           |
+| different:field | The field under validation must be different than the field given.                                             |
+| email           | The field under validation must be an email                                                                    |
+| in:foo,bar      | The field under validation must be included in the given list of values.                                       |
+| match:field     | The field under validation must match the field given.                                                         |
+| max:value       | The field under validation must be less than or equal to a maximum value.                                      |
+| min:value       | The field under validation must have a minimum value.                                                          |
+| required        | The field under validation is required                                                                         |
+| size:length     | The field under validation must have a size matching the given value.                                          |
 
