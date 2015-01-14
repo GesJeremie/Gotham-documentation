@@ -11,6 +11,7 @@ GothamJS is a simple and tiny framework built for **Directories Project**.
  - [Variables](#--variables)
  - [Constraints](#--constraints)
 - [Controllers](#controllers)
+- [Helpers](#helpers)
 - [Libraries](#libraries)
  - [View](#view)
  - [Syphon](#syphon)
@@ -131,6 +132,14 @@ module.exports = (route) ->
 ```
 
 In the controller `controllers/zombie/edit.coffee`, you can fetch the value of the variable `:id` via the `params` variable sent to `before()` and `run()`
+
+## Helpers
+
+Gotham use the awesome library [underscorejs](http://underscorejs.org/). Underscore provide a lot of helpers when you code with a lot stuff about array, object, etc ..
+
+Underscore provide a function `_.mixin()` to add your custom helpers. Gotham provide a simple file `app/helpers.coffee` where you can add your helpers.
+
+
 
 ## Libraries 
 
