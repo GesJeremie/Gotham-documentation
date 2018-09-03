@@ -1,3 +1,5 @@
+> :skull: This project has been archived.
+
 ![image](https://raw.githubusercontent.com/GesJeremie/Gotham-documentation/master/background.jpg)
 
 # GothamJS
